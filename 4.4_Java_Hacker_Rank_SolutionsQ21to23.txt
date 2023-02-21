@@ -1,0 +1,28 @@
+#Q21: Java Regex:
+Regex means Regular Expression. It is an API to deifne a pattern for searching or manipulating strings. 
+
+It is widely used to define the constraints on strings such as password and email validation. 
+
+Regular Expression of Number
+
+0-199 => [01]?\\d{1,2}
+200-249 => 2[0,4]\\d
+250-255 => 25[0-5]
+
+class MyRegex{
+    String number = "([01]?\\d{1,2}|2[0-4]\\d|25[0-5])";
+    String pattern = number+"."+number+"."+number+"."+number;
+}
+
+#Q22: Java Regex 2 : Duplicate Words Solution 
+String regex = "(\\b\\w+)(\\s\\1\\b)+" //9
+
+Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE); //10
+
+input = input.replaceAll(m.group(),m.group(1)); //22
+
+#23: Java Valid username using regular expression
+
+
+"^[a-zA-Z]\\w{7,29}$";/6
+

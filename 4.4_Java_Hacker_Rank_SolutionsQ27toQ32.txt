@@ -1,0 +1,167 @@
+#Q27: Java BigInteger
+import java.util.*;
+import java.math.regex.*;
+
+Scanner sc = new Scanner(System.in);
+BigInteger a = new BigInteger(sc.next());
+BigInteger b = new BigInteger(sc.next());
+System.out.println(a.add(b));
+System.out.println(a.multiply(b));
+
+#Q28: Java 1D Array
+int a [] = new int[n];
+        for(int i=0;i<n;i++)
+        {
+            a[i] = scan.nextInt();
+        }
+
+#Q29: Java 2D Array:
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+
+
+public class Solution {
+    public static void main (String[] args)
+     {
+     int a[][] = new int[6][6];
+     int maxSum = Integer.MIN_VALUE;
+     try(Scanner scanner = new Scanner(System.in);)
+     {
+         for(int i = 0; i<6; i++)
+         {
+             for (int j =0; j<6; j++)
+             {
+                 a[i][j] = scanner.nextInt();
+                 if(i > 1 && j > 1)
+                 {
+                     int sum = a[i][j] + a[i][j-1] + a[i][j-2] + a[i-1][j-1] + a[i-2][j]+a[i-2][j-1] + a[i-2][j-2];
+                     if(sum > maxSum)
+                     {
+                         maxSum = sum;
+                     }
+                 }
+             }
+         }
+     }   
+  System.out.println(maxSum);     
+}
+}
+
+
+Q30: java Subarray: 
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scanner = new Scanner (System.in);
+        int n = scanner.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++)
+        {
+        arr[i] = scanner.nextInt();    
+        }
+        scanner.close();
+        int negative_subarrays = 0;
+        for(int i = 0; i < n; i++){
+            for(int j=i; j<n; j++){
+                int current_sum  = 0;
+                for (int k = i; k<=j; k++){
+                    current_sum += arr[k];
+                }
+                if (current_sum < 0){
+                    negative_subarrays++;
+                }
+            }
+        }
+        System.out.println(negative_subarrays);
+    }
+}
+
+Q31: java ArrayList
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        ArrayList[] aList = new ArrayList[20000];
+        for (int i=0; i<n; i++){
+            aList[i] = new ArrayList();
+            int d = s.nextInt();
+            for (int j=0; j<d; j++){
+                int number = s.nextInt();
+                aList[i].add(number);
+                
+            }
+        }
+        int q = s.nextInt();
+        for (int k=0; k<q; k++)
+        {
+            int y = s.nextInt();
+            int x = s.nextInt();
+            try{
+                System.out.println(aList[y-1].get(x-1));
+                
+            }catch(Exception e){
+                System.out.println("ERROR!");
+                
+            }
+        }
+         
+    }
+}
+
+Q32: Java 1D array (Part 2)
+import java.util.*;
+
+public class Solution {
+
+    public static boolean canWin(int leap, int[] game) {
+        // Return true if you can win the game; otherwise, return false.
+        return lastStep(leap, game, 0);
+    }
+    private static boolean lastStep(int leap, int[] game, int i){
+        if(i >= game.length){
+            return true;
+        }
+        else if (i < 0 || game[i] == 1){
+            return false;
+        }
+        game[i] = 1;
+        return lastStep(leap, game, i + leap) || lastStep(leap, game, i + 1) || lastStep(leap, game, i - 1); //recursion concept is used. 
+    }
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int q = scan.nextInt();
+        while (q-- > 0) {
+            int n = scan.nextInt();
+            int leap = scan.nextInt();
+            
+            int[] game = new int[n];
+            for (int i = 0; i < n; i++) {
+                game[i] = scan.nextInt();
+            }
+
+            System.out.println( (canWin(leap, game)) ? "YES" : "NO" );
+        }
+        scan.close();
+    }
+}
+

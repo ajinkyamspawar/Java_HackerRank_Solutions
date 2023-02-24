@@ -1,0 +1,110 @@
+#Q33: Java List
+Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        List<Integer>integerList = new ArrayList<>(n);
+        for (int i = 0; i < n; i++){
+            integerList.add(scanner.nextInt());
+        }
+        // Queries
+        int q = scanner.nextInt();
+        for(int i = 0; i < q; i++  ){
+            String command = scanner.next();
+            if(command.equals("Insert")){
+                int x = scanner.nextInt();
+                int y = scanner.nextInt();
+                integerList.add(x,y);
+                
+            }
+            if(command.equals("Delete")){
+             int x = scanner.nextInt();
+             integerList.remove(x);   
+            }
+        }
+        // Print
+        for(Integer i : integerList){
+          System.out.print(i + " ");  
+        }
+
+#Q34: Java Map
+import java.util.*;
+public class solution{
+    public static void main(String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        scanner.nextLine();
+        
+        Map<String, Integer> map = new HashMap<>(n);
+        
+        for(int i=0; i<n; i++)
+        {
+            String name = scanner.nextLine();
+            int contact = scanner.nextInt();
+            scanner.nextLine();
+            map.put(name, contact);
+            
+        }
+        while(scanner.hasNext()){
+            String toFind = scanner.nextLine();
+            try{
+                int contact = map.get(toFind);
+                System.out.println(toFind + "=" + contact);
+                
+            }
+            catch(Exception e){
+                System.out.println("Not found");
+                }
+        }
+    }
+    
+}
+
+#Q35: Java Stack
+import java.util.*;
+class Solution{
+	
+	public static void main(String []argh)
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		while (sc.hasNext()) {
+			String input=sc.next();
+            Stack<Character> stack = new Stack<>();
+            
+            for(char c : input.toCharArray()){
+                if(!stack.isEmpty()){
+                    switch(c){
+                        case '}':
+                            if(stack.peek() == '{'){
+                                stack.pop();
+                                
+                            }
+                            break;
+                            case ')':
+                            if(stack.peek() == '('){
+                                stack.pop();
+                                
+                            }
+                            break;
+                            case ']':
+                            if(stack.peek() == '['){
+                                stack.pop();
+                                
+                            }
+                            break;
+                        default:
+                            stack.push(c);
+                            break;
+                              
+                    }
+                } else {
+                    stack.push(c);
+                }
+                
+            }
+            System.out.println(stack.isEmpty());
+            //Complete the code
+		}
+		
+	}
+}

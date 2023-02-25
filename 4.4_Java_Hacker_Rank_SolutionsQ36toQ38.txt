@@ -1,0 +1,63 @@
+Q36: Java Hashset
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+ public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int t = s.nextInt();
+        String [] pair_left = new String[t];
+        String [] pair_right = new String[t];
+        
+        for (int i = 0; i < t; i++) {
+            pair_left[i] = s.next();
+            pair_right[i] = s.next();
+        }
+
+//Write your code here
+        Set<List<String>> set = new HashSet<>(); //1
+        for (int i=0; i < t; i++){ 			//2
+            List<String> list = new ArrayList<>();//3
+            list.add(pair_left[i]);//4
+            list.add(pair_right[i]);//5
+		
+		//or one more way by creating list with the use of array i.e. instead of above 5 line only use 
+		//List<String> list = Arrays.asList(pair_left[i]),pair_right[i];
+								
+            set.add(list);
+            System.out.println(set.size());
+        }
+        
+
+
+   }
+}
+
+Q37: java Generics // in Java 7
+
+class Printer
+{
+   //Write your code here
+ <T> void printArray(T[] arr){
+     for(T data : arr){
+         System.out.println(data);
+     }
+ }
+ 
+}
+
+Q38: java Comparator:  //in Java 7 
+// Write your Checker class here
+class Checker implements Comparator<Player>{
+    public int compare (Player p1, Player p2){
+        if (p1.score != p2.score)
+        return p2.score - p1.score;
+        return p1.name.compareTo(p2.name);
+    }
+} 
+
+
